@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SkySense — AI Weather</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+    <div class="sky-bg"></div>
+
+    <main class="app-shell">
+
+        <header class="topbar">
+
+            <a class="brand" href="#">
+                <span class="brand-icon">☀</span>
+                <span>Sky<span class="brand-accent">Sense</span></span>
+            </a>
+
+            <div class="top-note">
+                <span class="live-dot"></span>
+                AI-powered weather assistant
+            </div>
+
+        </header>
+
+        <section class="hero">
+
+            <div class="hero-copy">
+
+                <p class="eyebrow">
+                    WEATHER, WITH INTELLIGENCE
+                </p>
+
+                <h1>
+                    See the sky.<br>
+                    <span>Understand it.</span>
+                </h1>
+
+                <p class="hero-desc">
+                    Current conditions and answers to your weather questions, all in one place.
+                </p>
+
+            </div>
+
+            <div class="hero-sun" aria-hidden="true">
+                <div class="sun-core"></div>
+                <div class="sun-rays"></div>
+            </div>
+
+        </section>
+
+        <section class="search-card">
+
+            <div class="search-label">
+                <span>⌕</span>
+                Check a location
+            </div>
+
+            <form id="weather-form" class="search-form">
+
+                <input
+                    id="city-input"
+                    type="text"
+                    placeholder="Enter a city, e.g. Pune"
+                    autocomplete="off"
+                    required
+                >
+
+                <button type="submit">
+                    <span>Search weather</span>
+                    <span class="btn-arrow">↗</span>
+                </button>
+
+            </form>
+
+            <div class="quick-cities">
+
+                <span>Popular:</span>
+
+                <button type="button" class="city-chip" data-city="Pune">
+                    Pune
+                </button>
+
+                <button type="button" class="city-chip" data-city="Mumbai">
+                    Mumbai
+                </button>
+
+                <button type="button" class="city-chip" data-city="Delhi">
+                    Delhi
+                </button>
+
+                <button type="button" class="city-chip" data-city="Bengaluru">
+                    Bengaluru
+                </button>
+
+            </div>
+
+        </section>
+
+        <section class="weather-grid">
+
+            <article class="weather-card main-weather">
+
+                <div class="card-top">
+
+                    <div>
+
+                        <p class="card-kicker">
+                            CURRENT WEATHER
+                        </p>
+
+                        <h2 id="location">
+                            Your location
+                        </h2>
+
+                        <p id="local-time" class="muted">
+                            Search for a city to begin
+                        </p>
+
+                    </div>
+
+                    <div class="weather-symbol" id="weather-icon">
+                        ☁️
+                    </div>
+
+                </div>
+
+                <div class="temperature-row">
+
+                    <div id="temperature" class="temperature">
+                        --<span>°C</span>
+                    </div>
+
+                    <div class="condition">
+
+                        <strong id="condition">
+                            Weather awaits
+                        </strong>
+
+                        <span id="feels-like">
+                            Feels like --°C
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <div class="weather-details">
+
+                    <div class="detail">
+                        <span class="detail-icon">💧</span>
+                        <div>
+                            <small>Humidity</small>
+                            <strong id="humidity">--%</strong>
+                        </div>
+                    </div>
+
+                    <div class="detail">
+                        <span class="detail-icon">💨</span>
+                        <div>
+                            <small>Wind</small>
+                            <strong id="wind">-- km/h</strong>
+                        </div>
+                    </div>
+
+                    <div class="detail">
+                        <span class="detail-icon">🌡️</span>
+                        <div>
+                            <small>Pressure</small>
+                            <strong id="pressure">-- mb</strong>
+                        </div>
+                    </div>
+
+                    <div class="detail">
+                        <span class="detail-icon">👁️</span>
+                        <div>
+                            <small>Visibility</small>
+                            <strong id="visibility">-- km</strong>
+                        </div>
+                    </div>
+
+                </div>
+
+            </article>
+
+            <article class="assistant-card">
+
+                <div class="assistant-heading">
+
+                    <div class="assistant-avatar">
+                        ✦
+                    </div>
+
+                    <div>
+                        <h3>Ask SkySense AI</h3>
+                        <p>Your curious weather companion</p>
+                    </div>
+
+                    <span class="online-pill">
+                        Ready
+                    </span>
+
+                </div>
+
+                <div class="chat-area" id="chat-area">
+
+                    <div class="ai-message">
+                        <span class="message-mark">✦</span>
+
+                        <p>
+                            Hi! Ask me about the weather, or let me search for something.
+                            Try “What's the weather in Pune?”
+                        </p>
+                    </div>
+
+                </div>
+
+                <form id="chat-form" class="chat-form">
+
+                    <input
+                        id="question-input"
+                        type="text"
+                        placeholder="Ask anything about weather…"
+                        autocomplete="off"
+                        required
+                    >
+
+                    <button type="submit" aria-label="Send question">
+                        ➤
+                    </button>
+
+                </form>
+
+                <div class="suggestions">
+
+                    <button type="button" data-question="What is the weather in Pune?">
+                        Weather in Pune
+                    </button>
+
+                    <button type="button" data-question="Find the capital of Maharashtra">
+                        Capital of Maharashtra
+                    </button>
+
+                </div>
+
+            </article>
+
+        </section>
+
+        <section class="insight-strip">
+
+            <div class="insight-icon">
+                ✧
+            </div>
+
+            <div>
+                <strong>Weather meets AI</strong>
+
+                <p>
+                    Search the web or retrieve current weather through a smart assistant powered by your notebook's tools.
+                </p>
+            </div>
+
+            <span class="strip-decoration">☁</span>
+
+        </section>
+
+        <footer>
+            <span>SkySense AI</span>
+            <span>Built with LangChain · Gemini · Weatherstack</span>
+        </footer>
+
+    </main>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+    <script src="/static/script.js" defer></script>
+
+</body>
+</html>
